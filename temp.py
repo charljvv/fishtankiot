@@ -25,6 +25,9 @@ def gettemp(id):
 	except:
 		return -99999
 
+	def getTempFormatted(id):
+		return temp(id)/float(1000)
+
 
 if __name__ == '__main__':
 	# Script has been called directly

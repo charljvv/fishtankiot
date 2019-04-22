@@ -3,8 +3,8 @@ import time
 
 def gettemp(id):
 	"""
-		Gets the temperature for the device number = id
-		"""
+	Gets the temperature for the device number = id
+	"""
 	try:
 		mytemp = ''
 		filename = 'w1_slave'
@@ -23,5 +23,12 @@ def gettemp(id):
 	except:
 		return -99999
 
-def poll(id):
+def getTempAsFloat(id):
+	"""
+	Gets the temperature for the device number = id, formatted as a celcius value 
+	"""
+	return gettemp(id)/float(1000)
+
+def getFormattedString(id):
 	return "Device " + id +" Temp : " + '{:.3f}'.format(gettemp(id)/float(1000))
+

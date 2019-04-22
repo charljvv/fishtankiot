@@ -2,7 +2,7 @@ import serial
 import RPi.GPIO as GPIO
 import time
 
-def poll(device_id):
+def getPh(device_id):
 	with serial.Serial(device_id ,115200, timeout=4) as ser:
 		ser.baudrate=115200
 		read_ser=ser.readline()
@@ -12,5 +12,12 @@ def poll(device_id):
 			else:
 				read_ser = ser.readline()
 		return read_ser.strip()
+
+
+def getPh_as_float(device_id):
+	phstring = getPh(device_id)
+	float_value = phstring.lower().replace('ph:', '')
+
+	return float(float_value)
 
 
