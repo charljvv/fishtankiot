@@ -85,26 +85,9 @@ if __name__ == "__main__":
     device_ids = [sensor1_id, sensor2_id]
     ph_device_paths = [ph_device_path]
 
-    timestamp = datetime.datetime.now().__str__()
+    timestamp = datetime.datetime.now().isoformat().__str__()
     messageAttributes = buildAllSensorsMessage(device_ids,ph_device_paths)
     messageBody = buildMessageBody(timestamp)
     messageGroupId = "allsensorsgroup"
     sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
 
-    timestamp = datetime.datetime.now().__str__()
-    messageAttributes = buildSingleTempSensorMessage(sensor1_id)
-    messageBody = buildMessageBody(timestamp)
-    messageGroupId = 'device_'+sensor1_id
-    sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
-
-    timestamp = datetime.datetime.now().__str__()
-    messageAttributes = buildSingleTempSensorMessage(sensor2_id)
-    messageBody = buildMessageBody(timestamp)
-    messageGroupId = 'device_'+sensor2_id
-    sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
-
-    timestamp = datetime.datetime.now().__str__()
-    messageAttributes = buildSinglePhSensorMessage(ph_device_path)
-    messageBody = buildMessageBody(timestamp)
-    messageGroupId = 'device_'+'PhSensor'
-    sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
