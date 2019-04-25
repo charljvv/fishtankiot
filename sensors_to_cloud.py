@@ -62,20 +62,29 @@ def buildSinglePhSensorMessage(ph_device_path):
 def buildMessageBody(timestamp):
     return "Timestamp:" + timestamp
 
-def sendMessage(queue_url,messageAttributes,messageBody,messageGroupId):
+def sendMessageFifoQueue(queue_url,messageAttributes,messageBody,messageGroupId):
     # Send message to SQS queue
     response = sqs.send_message(
         QueueUrl=queue_url,
         MessageAttributes=messageAttributes,
         MessageBody=messageBody,
-        MessageGroupId=messageGroupId
+        MessageId=messageGroupId
     )
     print("Response sequence number: " + response['SequenceNumber'])
+
+def sendMessageQueue(queue_url,messageAttributes,messageBody):
+    # Send message to SQS queue
+    response = sqs.send_message(
+        QueueUrl=queue_url,
+        MessageAttributes=messageAttributes,
+        MessageBody=messageBody
+    )
+    print(response)
 
 if __name__ == "__main__":
     # Setup
     sqs = boto3.client('sqs')
-    response = sqs.get_queue_url(QueueName='sensors.fifo')
+    response = sqs.get_queue_url(QueueName='sensors')
     queue_url = response['QueueUrl']
 
     sensor1_id = "28-02049245e6b4"
@@ -89,5 +98,6 @@ if __name__ == "__main__":
     messageAttributes = buildAllSensorsMessage(device_ids,ph_device_paths)
     messageBody = buildMessageBody(timestamp)
     messageGroupId = "allsensorsgroup"
-    sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
+    #sendMessageFifoQueue(queue_url,messageAttributes,messageBody,messageGroupId)
+    sendMessageQueue(queue_url,messageAttributes,messageBody)
 

@@ -1,7 +1,7 @@
 import boto3
 import datetime
 
-def parseAndPersist(max_queue_messages=10, queue_name='sensors.fifo'):
+def parseAndPersist(max_queue_messages=10, queue_name='sensors'):
     """
     Parse the messages from the sqs queue and persist
     """
