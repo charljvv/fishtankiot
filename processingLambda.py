@@ -1,23 +1,29 @@
-# setup logging to cloudwatch
 import logging
+# aws sdk
+import boto3
+import os
+
+# setup logging to cloudwatch
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# import aws sdk
-import boto3
+if('DBNAME' in os.environ):
+    dbNameFromEnv = os.environ['DBNAME']
+else:
+    dbNameFromEnv = 'sensors'
 
 def lambda_handler(event, context):
     responses = []
     for record in event['Records']:
         payload=record["body"]
-        response = saveToDB(record)
+        response = saveToDB(record, dbNameFromEnv)
         logger.info(response)
         responses.append(response)
 
     return responses
 
 
-def saveToDB(values_dict,table_name='sensordata2'):
+def saveToDB(values_dict,table_name):
     """ 
     Save to the Dynamodb instance 
     """

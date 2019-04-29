@@ -2,8 +2,13 @@
 import boto3 
 import datetime
 import fishtank
+import json
 
 def buildAllSensorsMessage(list_of_temperature_devices, list_of_ph_device_paths):
+    """
+    This method builds a dictionary object with a list of 
+    temperature devices and a list of paths to ph devices.
+    """
     retObject = dict()
     sensorCount = 0
     phSensorCount = 0
@@ -26,10 +31,12 @@ def buildAllSensorsMessage(list_of_temperature_devices, list_of_ph_device_paths)
         'StringValue' : timestamp
     }
     })
-    print(retObject)
     return retObject
 
 def buildSingleTempSensorMessage(device_id):
+    """
+    This method builds a single temperature sensor dictionary
+    """
     retObject = dict()
     retObject.update({'TempSensor' : 
     {
@@ -45,6 +52,9 @@ def buildSingleTempSensorMessage(device_id):
     return retObject
 
 def buildSinglePhSensorMessage(ph_device_path):
+    """
+    This method builds a single ph sensor dictionary
+    """
 
     retObject = dict()
     retObject.update({'PhSensor' : {
@@ -60,34 +70,50 @@ def buildSinglePhSensorMessage(ph_device_path):
 
 
 def buildMessageBody(timestamp):
+    """
+    This method builds the message body object 
+    """
     return "Timestamp:" + timestamp
 
-def sendMessage(queue_url,messageAttributes,messageBody,messageGroupId):
+def sendMessage(queue_url,messageAttributes,messageBody,delaySeconds=0):
+    """
+    Sends a message to the sqs queue located at queue_url, 
+    with the message attributes = messageAttributes,
+    message body = messageBody and the delay seconds = the default of 0 (can be overriden if provided)
+    """
     # Send message to SQS queue
     response = sqs.send_message(
         QueueUrl=queue_url,
         MessageAttributes=messageAttributes,
         MessageBody=messageBody,
-        MessageGroupId=messageGroupId
+        DelaySeconds=delaySeconds
     )
-    print("Response sequence number: " + response['SequenceNumber'])
+    return response
+
 
 if __name__ == "__main__":
     # Setup
     sqs = boto3.client('sqs')
-    response = sqs.get_queue_url(QueueName='sensors.fifo')
+    response = sqs.get_queue_url(QueueName='sensors')
     queue_url = response['QueueUrl']
 
+    # sensor devices and ph device path
     sensor1_id = "28-02049245e6b4"
     sensor2_id = "28-020f92456264"
     ph_device_path = "/dev/ttyACM0"
 
+    # to lists
     device_ids = [sensor1_id, sensor2_id]
     ph_device_paths = [ph_device_path]
 
+    # get current timestamp in iso formatted string
     timestamp = datetime.datetime.now().isoformat().__str__()
+
     messageAttributes = buildAllSensorsMessage(device_ids,ph_device_paths)
+
     messageBody = buildMessageBody(timestamp)
-    messageGroupId = "allsensorsgroup"
-    sendMessage(queue_url,messageAttributes,messageBody,messageGroupId)
+
+    response = sendMessage(queue_url,messageAttributes,messageBody)
+    
+    print(json.dumps(response))
 
