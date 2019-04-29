@@ -114,6 +114,6 @@ if __name__ == "__main__":
     messageBody = buildMessageBody(timestamp)
 
     response = sendMessage(queue_url,messageAttributes,messageBody)
-    
+
     print(json.dumps(response))
 
