@@ -10,12 +10,12 @@ logger.setLevel(logging.INFO)
 if('DBNAME' in os.environ):
     dbNameFromEnv = os.environ['DBNAME']
 else:
-    dbNameFromEnv = 'sensors'
+    dbNameFromEnv = 'sensordata'
 
 def lambda_handler(event, context):
     responses = []
     for record in event['Records']:
-        payload=record["body"]
+        record.update({'timestamp' : record['attributes'].get('SentTimestamp') })
         response = saveToDB(record, dbNameFromEnv)
         logger.info(response)
         responses.append(response)
