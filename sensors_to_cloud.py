@@ -1,4 +1,6 @@
 
+#!/usr/bin/python
+
 import boto3 
 import datetime
 import fishtank
