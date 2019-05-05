@@ -8,6 +8,7 @@ import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { Empty } from '../models/empty';
+import { SensorData } from '../models/sensor-data';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,11 +25,7 @@ class ApiService extends __BaseService {
   ) {
     super(config, http);
   }
-
-  /**
-   * @return 200 response
-   */
-  xAmazonApigatewayAnyMethodResponse(): __Observable<__StrictHttpResponse<Empty>> {
+  xAmazonApigatewayAnyMethodResponse(): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -45,23 +42,15 @@ class ApiService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Empty>;
+        return _r as __StrictHttpResponse<null>;
       })
     );
-  }
-  /**
-   * @return 200 response
-   */
-  xAmazonApigatewayAnyMethod(): __Observable<Empty> {
+  }  xAmazonApigatewayAnyMethod(): __Observable<null> {
     return this.xAmazonApigatewayAnyMethodResponse().pipe(
-      __map(_r => _r.body as Empty)
+      __map(_r => _r.body as null)
     );
   }
-
-  /**
-   * @return 200 response
-   */
-  xAmazonApigatewayAnyMethodApiResponse(): __Observable<__StrictHttpResponse<Empty>> {
+  xAmazonApigatewayAnyMethodApiResponse(): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -78,16 +67,12 @@ class ApiService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Empty>;
+        return _r as __StrictHttpResponse<null>;
       })
     );
-  }
-  /**
-   * @return 200 response
-   */
-  xAmazonApigatewayAnyMethodApi(): __Observable<Empty> {
+  }  xAmazonApigatewayAnyMethodApi(): __Observable<null> {
     return this.xAmazonApigatewayAnyMethodApiResponse().pipe(
-      __map(_r => _r.body as Empty)
+      __map(_r => _r.body as null)
     );
   }
 
@@ -160,7 +145,7 @@ class ApiService extends __BaseService {
   /**
    * @return 200 response
    */
-  getApiSensorsLatestResponse(): __Observable<__StrictHttpResponse<Empty>> {
+  getApiSensorsLatestResponse(): __Observable<__StrictHttpResponse<SensorData>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -177,16 +162,16 @@ class ApiService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Empty>;
+        return _r as __StrictHttpResponse<SensorData>;
       })
     );
   }
   /**
    * @return 200 response
    */
-  getApiSensorsLatest(): __Observable<Empty> {
+  getApiSensorsLatest(): __Observable<SensorData> {
     return this.getApiSensorsLatestResponse().pipe(
-      __map(_r => _r.body as Empty)
+      __map(_r => _r.body as SensorData)
     );
   }
 }

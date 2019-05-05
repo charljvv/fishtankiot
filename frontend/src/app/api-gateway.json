@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2019-05-02T07:39:28Z",
+    "version": "2019-05-05T20:36:48Z",
     "title": "FishtankAPI"
   },
   "host": "ezq2n9nwzk.execute-api.us-east-2.amazonaws.com",
@@ -12,10 +12,10 @@
       "x-amazon-apigateway-any-method": {
         "produces": ["application/json"],
         "responses": {
-          "200": {
-            "description": "200 response",
+          "404": {
+            "description": "404 response",
             "schema": {
-              "$ref": "#/definitions/Empty"
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -25,11 +25,8 @@
       "x-amazon-apigateway-any-method": {
         "produces": ["application/json"],
         "responses": {
-          "200": {
-            "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            }
+          "404": {
+            "description": "404 response"
           }
         }
       }
@@ -67,7 +64,7 @@
           "200": {
             "description": "200 response",
             "schema": {
-              "$ref": "#/definitions/Empty"
+              "$ref": "#/definitions/SensorData"
             }
           }
         }
@@ -78,6 +75,90 @@
     "Empty": {
       "type": "object",
       "title": "Empty Schema"
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Error Schema"
+    },
+    "SensorData": {
+      "type": "object",
+      "required": ["PhSensor1", "TempSensor1", "TempSensor2", "Timestamp"],
+      "properties": {
+        "PhSensor1": {
+          "type": "object",
+          "title": "The Phsensor1 Schema",
+          "properties": {
+            "stringValue": {
+              "type": "string",
+              "title": "The Stringvalue Schema",
+              "pattern": "^(.*)$"
+            },
+            "dataType": {
+              "type": "string",
+              "title": "The Datatype Schema",
+              "pattern": "^(.*)$"
+            }
+          },
+          "required": ["dataType", "stringValue"]
+        },
+        "TempSensor2": {
+          "type": "object",
+          "title": "The Tempsensor2 Schema",
+          "properties": {
+            "stringValue": {
+              "type": "string",
+              "title": "The Stringvalue Schema",
+              "pattern": "^(.*)$"
+            },
+            "dataType": {
+              "type": "string",
+              "title": "The Datatype Schema",
+              "pattern": "^(.*)$"
+            }
+          },
+          "required": ["dataType", "stringValue"]
+        },
+        "Timestamp": {
+          "type": "object",
+          "title": "The Timestamp Schema",
+          "properties": {
+            "stringValue": {
+              "type": "string",
+              "title": "The Stringvalue Schema",
+              "pattern": "^(.*)$"
+            },
+            "dataType": {
+              "type": "string",
+              "title": "The Datatype Schema",
+              "pattern": "^(.*)$"
+            }
+          },
+          "required": ["dataType", "stringValue"]
+        },
+        "TempSensor1": {
+          "type": "object",
+          "title": "The Tempsensor1 Schema",
+          "properties": {
+            "stringValue": {
+              "type": "string",
+              "title": "The Stringvalue Schema",
+              "pattern": "^(.*)$"
+            },
+            "dataType": {
+              "type": "string",
+              "title": "The Datatype Schema",
+              "pattern": "^(.*)$"
+            }
+          },
+          "required": ["dataType", "stringValue"]
+        }
+      },
+      "title": "The Root Schema"
     }
   }
 }
