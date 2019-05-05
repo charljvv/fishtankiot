@@ -7,7 +7,10 @@
 - [fishtank.py](fishtank.py) is used as a wrapper library for calling the functions from arduino_module and temp_module
 - [processingLambda.py](lambdas/processingLambda.py) is the python script run on the serverless lambda functions to process sqs data to dynamodb
 - [query_cloud.py](query_cloud.py) is an initial proof of concept to manually invoke a function to read the latest data from the SQS queues
-- [sensors_to_cloud.py](sensors_to_cloud.py) is the python script to query all the sensors, build a dictionary object to send to the SQS queues. This is run on a cron job on the Raspberry PI.
+- [lambdas/sensors_to_cloud.py](sensors_to_cloud.py) is the python script to query all the sensors, build a dictionary object to send to the SQS queues. This is run on a cron job on the Raspberry PI.
+- [lambdas/allEndpoint.js](lambdas/allEndpoint.js) NodeJS file to retrieve the last `n` records from the DynamoDB
+- [lambdas/latestEndpoint.js](lambdas/latestEndpoint.js) NodeJS file to retrieve the latest reading data from DynamoDB
+- [lambdas/notImplemented.js](lambdas/notImplemented.js) NodeJS file to return a 404 for not implemented endpoints
 
 
 To run this locally: 
