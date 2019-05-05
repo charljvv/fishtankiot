@@ -14,7 +14,7 @@ def get_device_temperature(device_id):
 def get_ph(ph_device_path_id):
 	return arduino_module.getPh_as_float(ph_device_path_id)
 
-# Can get a list of these by running `ls /sys/bus/w1/devices/ | grep 28 > devicelist.txt`
+# Can get a list of these by running `ls /sys/bus/w1/devices/ | grep 28 > devicenames.txt`
 device_ids = ["28-02049245e6b4", "28-020f92456264"]
 ph_device_path = "/dev/ttyACM0"
 
