@@ -14,3 +14,6 @@ To run this locally:
 - Make sure the env variable 'DBNAME' is set to your Dynamodb instance name. This is used by all the NodeJS lambdas and the processing lambda
 - Enable the One wire interface on the Raspberry Pi (for the temp readings)
 - Enable reading from the serial busses (for the Arduino readings)
+
+Add a cronjob with the following configuration:
+`1 * * * * python ~/fishtankiot/sensors_to_cloud.py`
