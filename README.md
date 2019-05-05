@@ -15,5 +15,4 @@ To run this locally:
 - Enable the One wire interface on the Raspberry Pi (for the temp readings)
 - Enable reading from the serial busses (for the Arduino readings)
 
-Add a cronjob with the following configuration:
-`1 * * * * python ~/fishtankiot/sensors_to_cloud.py`
+- Add a cronjob with the following configuration: `1 * * * * python ~/fishtankiot/sensors_to_cloud.py`
