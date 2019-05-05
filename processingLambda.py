@@ -15,7 +15,7 @@ else:
 def lambda_handler(event, context):
     responses = []
     for record in event['Records']:
-        record.update({'timestamp' : record['attributes'].get('SentTimestamp') })
+        record.update({'timestamp' : int(record['attributes'].get('SentTimestamp')) })
         response = saveToDB(record, dbNameFromEnv)
         logger.info(response)
         responses.append(response)
