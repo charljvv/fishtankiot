@@ -15,6 +15,7 @@
 
 To run this locally: 
 - Make sure the env variable 'DBNAME' is set to your Dynamodb instance name. This is used by all the NodeJS lambdas and the processing lambda
+- Make sure the env variable 'LIMIT' is set on the allEndpoint lambda to specify the `n` values to retrieve
 - Enable the One wire interface on the Raspberry Pi (for the temp readings)
 - Enable reading from the serial busses (for the Arduino readings)
 
