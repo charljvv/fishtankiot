@@ -9,9 +9,35 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SensorDetailComponent implements OnInit {
 
   @Input() sensordata: SensorData;
+  @Input() inList : Boolean;
+  public fishdead : Boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public colorForTemp(tempValue) {
+    if (tempValue > 29) {
+      this.fishdead = true;
+      return 'red';
+    } else if (tempValue < 24) {
+      this.fishdead = true;
+      return 'blue';
+    } else { 
+      this.fishdead = false; 
+      return 'green'; }
+  }
+
+  public colorForPh(phValue) {
+    if (phValue > 8.5) {
+      this.fishdead = true;
+      return 'red';
+    } else if (phValue < 5) {
+      this.fishdead = true;
+      return 'blue';
+    } else { 
+      this.fishdead = false;
+      return 'green'; }
   }
 
 }

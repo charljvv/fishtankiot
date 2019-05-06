@@ -14,10 +14,10 @@ export class SensorComponent implements OnInit {
       // this.sensordata = response.body;
       // console.log(this.sensordata);
       this.sensordata = {
-        PhSensor1: { stringValue: '7.5', dataType: 'number' },
+        PhSensor1: { stringValue: '6', dataType: 'number' },
         TempSensor2: { stringValue: '20', dataType: 'number' },
         Timestamp: { stringValue: '20', dataType: 'string' },
-        TempSensor1: { stringValue: '20', dataType: 'number' },
+        TempSensor1: { stringValue: '30', dataType: 'number' },
       };
     });
   }

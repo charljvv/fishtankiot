@@ -3,19 +3,27 @@
     <mat-list>
       <mat-list-item>
         <mat-icon matListIcon>waves</mat-icon>
-        <h3 matLine>PH: {{ sensordata.PhSensor1.stringValue}}</h3>
+        <h3 matLine [ngClass]="colorForPh(sensordata.PhSensor1.stringValue)">
+          PH:
+          {{ sensordata.PhSensor1.stringValue}}</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>whatshot</mat-icon>
-        <h3 matLine>Temp Sensor 1: {{ sensordata.TempSensor1.stringValue }} &#176;C</h3>
+        <h3 matLine [ngClass]="colorForTemp(sensordata.TempSensor1.stringValue)">
+          Temp Sensor 1:
+          {{ sensordata.TempSensor1.stringValue }} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>whatshot</mat-icon>
-        <h3 matLine>Temp Sensor 2: {{ sensordata.TempSensor2.stringValue}} &#176;C</h3>
+        <h3 matLine [ngClass]="colorForTemp(sensordata.TempSensor2.stringValue)">
+          Temp Sensor 2:
+          {{ sensordata.TempSensor2.stringValue}} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>av_timer</mat-icon>
-        <h3 matLine>Average Temp from all sensors:
+        <h3 matLine
+          [ngClass]="colorForTemp(((sensordata.TempSensor1.stringValue*1)+(sensordata.TempSensor2.stringValue*1))/2)">
+          Average Temp from all sensors:
           {{ ((sensordata.TempSensor1.stringValue*1)+(sensordata.TempSensor2.stringValue*1))/2 }} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
@@ -23,5 +31,12 @@
         <h3 matLine>Timestamp: {{ sensordata.Timestamp.stringValue | date }}</h3>
       </mat-list-item>
     </mat-list>
+  </mat-card>
+  <mat-card class="red" *ngIf="fishdead == true && !inList">
+    Warning! Your fish are gonna die!
+  </mat-card>
+
+  <mat-card class="green" *ngIf="fishdead == false && !inList">
+    <h3 matLine> Status: Your fish are probably gonna be fine. </h3>
   </mat-card>
 </div>
