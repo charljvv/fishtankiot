@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  public navLinks =
+    [
+      { label: 'Latest', path: 'sensor' },
+      { label: 'Historical data', path: 'sensor_list' }];
   title = 'frontend';
 }
