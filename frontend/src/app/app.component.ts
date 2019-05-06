@@ -11,5 +11,5 @@ export class AppComponent {
     [
       { label: 'Latest', path: 'sensor' },
       { label: 'Historical data', path: 'sensor_list' }];
-  title = 'frontend';
+  title = 'Cloud Fishtank';
 }
