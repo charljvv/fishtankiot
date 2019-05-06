@@ -28,7 +28,7 @@
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>access_time</mat-icon>
-        <h3 matLine>Timestamp: {{ sensordata.Timestamp.stringValue | date }}</h3>
+        <h3 matLine>Timestamp: {{ sensordata.Timestamp.stringValue | date : "medium"}}</h3>
       </mat-list-item>
     </mat-list>
   </mat-card>
