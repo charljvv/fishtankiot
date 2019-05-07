@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { ApiService } from "../api/services";
-import { SensorData } from "../api/models";
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api/services';
+import { SensorData } from '../api/models';
 
 @Component({
-  selector: "app-sensor-list",
-  templateUrl: "./sensor-list.component.html",
-  styleUrls: ["./sensor-list.component.css"]
+  selector: 'app-sensor-list',
+  templateUrl: './sensor-list.component.html',
+  styleUrls: ['./sensor-list.component.css']
 })
 export class SensorListComponent implements OnInit {
   public sensorListData;
@@ -34,5 +34,5 @@ export class SensorListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

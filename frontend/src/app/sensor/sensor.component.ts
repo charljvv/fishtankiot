@@ -1,26 +1,25 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ApiService } from "../api/services";
-import { SensorData } from "../api/models";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ApiService } from '../api/services';
+import { SensorData } from '../api/models';
 import { Observable, timer } from 'rxjs';
 
 @Component({
-  selector: "app-sensor",
-  templateUrl: "./sensor.component.html",
-  styleUrls: ["./sensor.component.css"]
+  selector: 'app-sensor',
+  templateUrl: './sensor.component.html',
+  styleUrls: ['./sensor.component.css']
 })
 export class SensorComponent implements OnInit {
   public sensordata;
 
-  // Uncomment this to live reload every 5 seconds, add implements 
+  // Uncomment this to live reload every 5 seconds, add implements
   // private sensorSubscription;
   // private timerSubscription;
-  
   constructor(private apiService: ApiService) {
     apiService.getApiSensorsLatestResponse().subscribe(response => {
       this.sensordata = response.body.messageAttributes;
 
-      // Uncomment this to live reload every 5 seconds, add implements 
-      //this.refreshData();
+      // Uncomment this to live reload every 5 seconds, add implements
+      // this.refreshData();
     });
   }
   ngOnInit() { }

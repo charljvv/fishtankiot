@@ -5,12 +5,21 @@ import { SensorListComponent } from './sensor-list/sensor-list.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/sensor',
+    pathMatch: 'full'
+  },
+  {
     path: 'sensor',
     component: SensorComponent
   },
   {
     path: 'sensor_list',
     component: SensorListComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/sensor'
   }
 
 ];
