@@ -1,7 +1,7 @@
-.matCard
+/* .matCard
 {
   width: 85%;
-}
+} */
 .red {
 color: red;
 }
@@ -14,6 +14,6 @@ color: red;
 
 .paddingAndBorder
 {
-  padding : 5px;
-  border : 2px;
+  padding : 25px;
+  border : 5px;
 }

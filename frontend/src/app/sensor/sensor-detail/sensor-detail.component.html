@@ -1,42 +1,76 @@
 <div class="paddingAndBorder" *ngIf="sensordata">
-  <mat-card>
+  <mat-card class="paddingAndBorder">
+    <mat-card-title-group>
+      <mat-card-title *ngIf="!inList">Latest Sensor Info</mat-card-title>
+    </mat-card-title-group>
     <mat-list>
       <mat-list-item>
         <mat-icon matListIcon>waves</mat-icon>
         <h3 matLine [ngClass]="colorForPh(sensordata.PhSensor1.stringValue)">
-          PH:
+          <b>PH:</b>
           {{ sensordata.PhSensor1.stringValue}}</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>whatshot</mat-icon>
         <h3 matLine [ngClass]="colorForTemp(sensordata.TempSensor1.stringValue)">
-          Temp Sensor 1:
+          <b>Temp Sensor 1:</b>
           {{ sensordata.TempSensor1.stringValue }} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>whatshot</mat-icon>
         <h3 matLine [ngClass]="colorForTemp(sensordata.TempSensor2.stringValue)">
-          Temp Sensor 2:
+          <b>Temp Sensor 2:</b>
           {{ sensordata.TempSensor2.stringValue}} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>av_timer</mat-icon>
         <h3 matLine
           [ngClass]="colorForTemp(((sensordata.TempSensor1.stringValue*1)+(sensordata.TempSensor2.stringValue*1))/2)">
-          Average Temp from all sensors:
+          <b>Average Temp:</b>
           {{ ((sensordata.TempSensor1.stringValue*1)+(sensordata.TempSensor2.stringValue*1))/2 }} &#176;C</h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>access_time</mat-icon>
-        <h3 matLine>Timestamp: {{ sensordata.Timestamp.stringValue | date : "medium"}}</h3>
+        <h3 matLine><b>Timestamp:</b> {{ sensordata.Timestamp.stringValue | date : "medium"}}</h3>
       </mat-list-item>
     </mat-list>
   </mat-card>
-  <mat-card class="red" *ngIf="fishdead == true && !inList">
-    Warning! Your fish are gonna die!
-  </mat-card>
+  <mat-card class="paddingAndBorder">
+    <mat-card-title-group>
+      <mat-card-title *ngIf="!inList">Health Info</mat-card-title>
+    </mat-card-title-group>
+    <mat-list>
+      <div *ngIf="fishdead == true">
+        <mat-list-item class="red">
+          <mat-icon matListIcon>warning</mat-icon>
+          <h3 matLine> Warning! Your fish in danger!</h3>
+        </mat-list-item>
 
-  <mat-card class="green" *ngIf="fishdead == false && !inList">
-    <h3 matLine> Status: Your fish are probably gonna be fine. </h3>
+        <mat-list-item class="blue" *ngIf="phLow">
+          <mat-icon matListIcon>sentiment_very_dissatisfied</mat-icon>
+          <h3 matLine> Solution: Increase PH </h3>
+        </mat-list-item>
+
+        <mat-list-item class="red" *ngIf="phHigh">
+          <mat-icon matListIcon>sentiment_very_dissatisfied</mat-icon>
+          <h3 matLine> Solution: Decrease PH </h3>
+        </mat-list-item>
+
+        <mat-list-item class="blue" *ngIf="avgTempLow">
+          <mat-icon matListIcon>sentiment_very_dissatisfied</mat-icon>
+          <h3 matLine> Solution: Increase temperature </h3>
+        </mat-list-item>
+
+        <mat-list-item class="red" *ngIf="avgTempHigh">
+          <mat-icon matListIcon>sentiment_very_dissatisfied</mat-icon>
+          <h3 matLine> Solution: Decrease temperature </h3>
+        </mat-list-item>
+
+      </div>
+      <mat-list-item class="green" *ngIf="fishdead == false">
+        <mat-icon matListIcon>done</mat-icon>
+        <h3 matLine> Status: Your fish are probably gonna be fine. </h3>
+      </mat-list-item>
+    </mat-list>
   </mat-card>
 </div>

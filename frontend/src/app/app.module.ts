@@ -14,13 +14,14 @@ import {
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SensorListComponent } from './sensor-list/sensor-list.component';
 import { SensorDetailComponent } from './sensor/sensor-detail/sensor-detail.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent, SensorComponent, SensorListComponent, SensorDetailComponent],
   imports:
     [BrowserModule, AppRoutingModule, ApiModule, BrowserAnimationsModule, MatButtonModule,
       MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule,
-      MatTabsModule, MatCardModule, MatListModule, MatGridListModule],
+      MatTabsModule, MatCardModule, MatListModule, MatGridListModule, FlexLayoutModule],
   providers: [],
   bootstrap: [AppComponent]
 })
