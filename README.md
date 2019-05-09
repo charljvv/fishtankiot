@@ -8,9 +8,10 @@
 - [processingLambda.py](lambdas/processingLambda.py) is the python script run on the serverless lambda functions to process sqs data to dynamodb
 - [query_cloud.py](query_cloud.py) is an initial proof of concept to manually invoke a function to read the latest data from the SQS queues
 - [lambdas/sensors_to_cloud.py](sensors_to_cloud.py) is the python script to query all the sensors, build a dictionary object to send to the SQS queues. This is run on a cron job on the Raspberry PI.
-- [lambdas/allEndpoint.js](lambdas/allEndpoint.js) NodeJS file to retrieve the last `n` records from the DynamoDB
-- [lambdas/latestEndpoint.js](lambdas/latestEndpoint.js) NodeJS file to retrieve the latest reading data from DynamoDB
-- [lambdas/notImplemented.js](lambdas/notImplemented.js) NodeJS file to return a 404 for not implemented endpoints
+- [lambdas/allEndpoint.js](lambdas/allEndpoint.js) NodeJS lambda to retrieve the last `n` records from the DynamoDB
+- [lambdas/latestEndpoint.js](lambdas/latestEndpoint.js) NodeJS lambda to retrieve the latest reading data from DynamoDB
+- [lambdas/notImplemented.js](lambdas/notImplemented.js) NodeJS lambda to return a 404 for not implemented endpoints
+- [lambdas/googleHomeEndpoint.js](lambdas/googleHomeEndpoint.js) NodeJS lambda to interact with the google assistant and dialog flow systems.
 
 
 To run this locally: 
