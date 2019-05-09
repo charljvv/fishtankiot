@@ -21,3 +21,7 @@ To run this locally:
 - Enable reading from the serial busses (for the Arduino readings)
 
 - Add a cronjob with the following configuration: `1 * * * * python ~/fishtankiot/sensors_to_cloud.py`
+
+
+Youtube link to sensor live demonstration:
+[https://youtu.be/qXQ8UBO6ISE](https://youtu.be/qXQ8UBO6ISE)
