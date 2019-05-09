@@ -5,8 +5,8 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 module.exports.latest = (event, context, callback) => {
   var params = {
     TableName: process.env.DBNAME,
-    ProjectionExpression: "messageId, messageAttributes",
-    Limit: 1
+    ScanIndexForward: false,
+    Limit: 100
   };
 
   console.log("Scanning Sensordata table.");
@@ -17,12 +17,19 @@ module.exports.latest = (event, context, callback) => {
         JSON.stringify(err, null, 2)
       );
       callback(err);
-    } else {
+    }
+    else {
       console.log("Scan succeeded.");
-      return callback(null, {
-        statusCode: 200,
-        body: data.Items
-      });
+
+      var mostRecentReading = new Date(Math.max.apply(null, data.Items.map(e => {
+        return new Date(e.timestamp);
+      })));
+      var mostRecentObject = data.Items.filter(e => {
+        var d = new Date(e.timestamp);
+        return d.getTime() == mostRecentReading.getTime();
+      })[0];
+
+      return callback(null, mostRecentObject);
     }
   };
 

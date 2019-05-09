@@ -3,18 +3,23 @@ const AWS = require("aws-sdk");
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.list = (event, context, callback) => {
-  var limit;
-  if (process.env.LIMIT) {
+  
+  var limit; 
+  if(process.env.LIMIT)
+  {
     limit = process.env.LIMIT;
-  } else {
+  }
+  else 
+  {
     limit = 20;
   }
 
   var params = {
     TableName: process.env.DBNAME,
-    ProjectionExpression: "messageId, messageAttributes",
-    Limit: limit
+    ProjectionExpression: "messageId, messageAttributes", 
+    Limit : limit
   };
+
 
   const onScan = (err, data) => {
     if (err) {
@@ -25,10 +30,7 @@ module.exports.list = (event, context, callback) => {
       callback(err);
     } else {
       console.log("Scan succeeded.");
-      return callback(null, {
-        statusCode: 200,
-        body: data.Items
-      });
+      return callback(null, data.Items);
     }
   };
 
