@@ -23,5 +23,10 @@ To run this locally:
 - Add a cronjob with the following configuration: `1 * * * * python ~/fishtankiot/sensors_to_cloud.py`
 
 
-Youtube link to sensor live demonstration:
+## Youtube link to sensor live demonstration:
 [https://youtu.be/qXQ8UBO6ISE](https://youtu.be/qXQ8UBO6ISE)
+
+## High-level deployment diagram:
+![High Level Diagram](https://github.com/charljvv/fishtankiot/blob/master/High_level_tech_stack_Latest.png "High-level design")
+## Physical diagram:
+![Physical Diagram](https://github.com/charljvv/fishtankiot/blob/master/Physical_Layout.png "Physical Layout")
