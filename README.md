@@ -14,7 +14,7 @@
 - [lambdas/googleHomeEndpoint.js](lambdas/googleHomeEndpoint.js) NodeJS lambda to interact with the google assistant and dialog flow systems.
 
 
-To run this locally: 
+# To run this locally: 
 - Make sure the env variable 'DBNAME' is set to your Dynamodb instance name. This is used by all the NodeJS lambdas and the processing lambda
 - Make sure the env variable 'LIMIT' is set on the allEndpoint lambda to specify the `n` values to retrieve
 - Enable the One wire interface on the Raspberry Pi (for the temp readings)
