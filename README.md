@@ -61,14 +61,14 @@
 [http://dgxpvcf8ay4dh.cloudfront.net/sensor](http://dgxpvcf8ay4dh.cloudfront.net/sensor) 
 
 ## High-level deployment diagram:
-![High Level Diagram](https://github.com/charljvv/fishtankiot/blob/master/High_level_tech_stack_Latest.png "High-level design")
+![High Level Diagram](assets/High_level_tech_stack_Latest.png "High-level design")
 ## Physical diagram:
-![Physical Diagram](https://github.com/charljvv/fishtankiot/blob/master/Physical_Layout.png "Physical Layout")
+![Physical Diagram](assets/Physical_Layout.png "Physical Layout")
 
 ## Physical wiring and sensor images
-![Arduino.jpeg](video/Arduino.jpeg)
-![Breadboard.jpeg](video/Breadboard.jpeg)
-![PHConnector.jpeg](video/PHConnector.jpeg)
-![PI.jpeg](video/PI.jpeg)
-![Ph.jpeg](video/Ph.jpeg)
-![TempSensors.jpeg](video/TempSensors.jpeg)
+![Arduino.jpeg](assets/Arduino.jpeg)
+![Breadboard.jpeg](assets/Breadboard.jpeg)
+![PHConnector.jpeg](assets/PHConnector.jpeg)
+![PI.jpeg](assets/PI.jpeg)
+![Ph.jpeg](assets/Ph.jpeg)
+![TempSensors.jpeg](assets/TempSensors.jpeg)
