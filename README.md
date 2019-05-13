@@ -60,6 +60,9 @@
 ## Link to CloudFront hosted S3 bucket
 [http://dgxpvcf8ay4dh.cloudfront.net/sensor](http://dgxpvcf8ay4dh.cloudfront.net/sensor) 
 
+## Google Assistant example
+[Google](assets/google.jpeg)
+
 ## High-level deployment diagram:
 ![High Level Diagram](assets/High_level_tech_stack_Latest.png "High-level design")
 ## Physical diagram:
