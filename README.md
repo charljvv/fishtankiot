@@ -50,7 +50,7 @@
 - Setup a new S3 bucket
 - `cd frontend`
 - Update [/frontend/deployment.sh](/frontend/deployment.sh) with your s3 bucket name replace `fishtankiot` with your bucket name
-- run ./deployment.sh [/frontend/deployment.sh](/frontend/deployment.sh)
+- run `./deployment.sh` [/frontend/deployment.sh](/frontend/deployment.sh)
 - Setup a Cloudfront redirect to serve index.html as the error and intro pages, to allow angular to do the application routing
 
 ## DialogFlow and Google assistant integration
