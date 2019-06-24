@@ -62,8 +62,6 @@
 ## Youtube link to sensor live demonstration:
 [https://youtu.be/qXQ8UBO6ISE](https://youtu.be/qXQ8UBO6ISE)
 
-## Link to CloudFront hosted S3 bucket
-[http://dgxpvcf8ay4dh.cloudfront.net/sensor](http://dgxpvcf8ay4dh.cloudfront.net/sensor) 
 
 ## High-level deployment diagram:
 ![High Level Diagram](assets/High_level_tech_stack_Latest.png "High-level design")
